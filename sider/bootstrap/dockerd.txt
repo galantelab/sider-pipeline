@@ -1,0 +1,3 @@
+#!/bin/bash
+# Set Docker daemon options
+cloud-init-per once docker_options echo 'OPTIONS="${OPTIONS} --storage-opt dm.basesize=1000G"' >> /etc/sysconfig/docker

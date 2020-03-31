@@ -1,0 +1,10 @@
+"placementStrategy": [
+	{
+		"field": "attribute:ecs.availability-zone",
+		"type": "spread"
+	},
+	{
+		"field": "memory",
+		"type": "binpack"
+	}
+]

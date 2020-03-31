@@ -1,3 +1,13 @@
 bk/
 build/
 builddir/
+security/
+tmp/
+*.bk
+*.tar
+*.tar.gz
+*.fa
+*.fa.gz
+*.tmp
+*.stamp
+cache/
