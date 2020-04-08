@@ -1,54 +1,114 @@
 {
-    "family": "rosalind",
-    "taskRoleArn": "rosalind-ecs-fullAccess",
-    "executionRoleArn": "ecsTaskExecutionRole",
-    "networkMode": "bridge",
-    "containerDefinitions": [
+  "ipcMode": null,
+  "executionRoleArn": "arn:aws:iam::814951050926:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "dnsSearchDomains": null,
+      "logConfiguration": null,
+      "entryPoint": null,
+      "portMappings": [],
+      "command": null,
+      "linuxParameters": null,
+      "cpu": 0,
+      "environment": [
         {
-            "name": "ponga",
-            "image": "thiagomiller/rosalind",
-            "memoryReservation": 8000,
-            "command": [
-                "task_run.sh"
-            ],
-            "environment": [
-                {
-                    "name": "BATCH_FILE_TYPE",
-                    "value": "script"
-                },
-                {
-                    "name": "BATCH_FILE_S3_URL",
-                    "value": "s3://rosalind-task/task_run.sh"
-                },
-                {
-                    "name": "SSMTP_CONFIG_S3_URL",
-                    "value": "s3://rosalind-shadow/ssmtp.conf"
-                }
-            ],
-            "linuxParameters": {
-                "capabilities": {
-                    "add": [
-                        "SYS_ADMIN"
-                    ]
-                },
-                "devices": [
-                    {
-                        "hostPath": "/dev/fuse",
-                        "containerPath": "/dev/fuse",
-                        "permissions": [
-                            "mknod"
-                        ]
-                    }
-                ]
-            },
-            "hostname": "rosalind.aws.com",
-            "privileged": true,
-            "dockerSecurityOptions": [
-                "apparmor:unconfined"
-            ]
+          "name": "BATCH_FILE_S3_URL",
+          "value": "s3://siderp/worker.sh"
+        },
+        {
+          "name": "BATCH_FILE_TYPE",
+          "value": "script"
         }
-    ],
-    "requiresCompatibilities": [
-        "EC2"
-    ]
+      ],
+      "resourceRequirements": null,
+      "ulimits": null,
+      "dnsServers": null,
+      "mountPoints": [
+        {
+          "readOnly": true,
+          "containerPath": "/1000genomes",
+          "sourceVolume": "1000genomes"
+        }
+      ],
+      "workingDirectory": null,
+      "secrets": null,
+      "dockerSecurityOptions": null,
+      "memory": null,
+      "memoryReservation": 1024,
+      "volumesFrom": [],
+      "stopTimeout": null,
+      "image": "814951050926.dkr.ecr.us-east-1.amazonaws.com/siderp:dev",
+      "startTimeout": null,
+      "firelensConfiguration": null,
+      "dependsOn": null,
+      "disableNetworking": null,
+      "interactive": null,
+      "healthCheck": null,
+      "essential": true,
+      "links": null,
+      "hostname": null,
+      "extraHosts": null,
+      "pseudoTerminal": null,
+      "user": null,
+      "readonlyRootFilesystem": null,
+      "dockerLabels": null,
+      "systemControls": null,
+      "privileged": null,
+      "name": "siderp"
+    }
+  ],
+  "placementConstraints": [],
+  "memory": null,
+  "taskRoleArn": "arn:aws:iam::814951050926:role/ecsTaskExecutionRole",
+  "compatibilities": [
+    "EC2"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:814951050926:task-definition/sider:5",
+  "family": "sider",
+  "requiresAttributes": [
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-ecr-pull"
+    }
+  ],
+  "pidMode": null,
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "networkMode": null,
+  "cpu": null,
+  "revision": 5,
+  "status": "ACTIVE",
+  "inferenceAccelerators": null,
+  "proxyConfiguration": null,
+  "volumes": [
+    {
+      "efsVolumeConfiguration": null,
+      "name": "1000genomes",
+      "host": {
+        "sourcePath": "/1000genomes"
+      },
+      "dockerVolumeConfiguration": null
+    }
+  ]
 }
