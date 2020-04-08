@@ -1,0 +1,5 @@
+#!/bin/bash
+# Install nfs client
+yum install -y nfs-utils
+mkdir -p /1000genomes
+mount -t nfs -o nolock,hard 3.89.5.44:/1000genomes /1000genomes

@@ -1,0 +1,40 @@
+Content-Type: multipart/mixed; boundary="===============1751244057080754033=="
+MIME-Version: 1.0
+
+--===============1751244057080754033==
+Content-Type: text/x-shellscript; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="dockerd.txt"
+
+#!/bin/bash
+# Set Docker daemon options
+cloud-init-per once docker_options echo 'OPTIONS="${OPTIONS} --storage-opt dm.basesize=1000G"' >> /etc/sysconfig/docker
+
+--===============1751244057080754033==
+Content-Type: text/x-shellscript; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="ecs.txt"
+
+#!/bin/bash
+# Set any ECS agent configuration options
+cat >> /etc/ecs/ecs.config <<EOF
+ECS_CLUSTER=sider
+ECS_SELINUX_CAPABLE=true
+ECS_APPARMOR_CAPABLE=true
+EOF
+
+--===============1751244057080754033==
+Content-Type: text/x-shellscript; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="gateway.txt"
+
+#!/bin/bash
+# Install nfs client
+yum install -y nfs-utils
+mkdir -p /1000genomes
+mount -t nfs -o nolock,hard 3.89.5.44:/1000genomes /1000genomes
+
+--===============1751244057080754033==--
