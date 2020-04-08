@@ -1,4 +1,4 @@
-FROM galantelab/sider:release-0.14.0
+FROM galantelab/sider:dev
 
 ARG FASTA_FILE
 ARG GTF_FILE

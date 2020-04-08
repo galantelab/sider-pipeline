@@ -1,5 +1,5 @@
 SHELL := bash
-TAG := siderp
+TAG := siderp:dev
 ECR := 814951050926.dkr.ecr.us-east-1.amazonaws.com
 FTP_FASTA := ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/GRCh38_reference_genome/GRCh38_full_analysis_set_plus_decoy_hla.fa
 FASTA_FILE := /home/users/tmiller/projects_current/sider-pipeline/sider/docker/GRCh38_full_analysis_set_plus_decoy_hla.fa
